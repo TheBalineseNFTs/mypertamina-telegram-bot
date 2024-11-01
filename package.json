@@ -4,7 +4,7 @@
   "description": "A Telegram bot for managing OTPs and user sessions.",
   "main": "src/app.js", "src/bot.js",
   "scripts": {
-    "start": "node src/app.js",
+    "start": "node src/app.js", "node src/bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
