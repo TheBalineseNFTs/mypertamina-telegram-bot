@@ -1,15 +1,16 @@
 {
-  "name": "telegram-otp-bot",
+  "name": "mypertamina-telegram-bot",
   "version": "1.0.0",
-  "description": "Telegram bot for OTP verification",
+  "description": "A Telegram bot for managing OTPs and user sessions.",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "bot": "node src/bot.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "node-telegram-bot-api": "^0.30.0"
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "node-telegram-bot-api": "^0.58.0"
   }
 }
