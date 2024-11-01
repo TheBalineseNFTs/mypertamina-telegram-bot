@@ -2,9 +2,9 @@
   "name": "mypertamina-telegram-bot",
   "version": "1.0.0",
   "description": "A Telegram bot for managing OTPs and user sessions.",
-  "main": "src/bot.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node src/bot.js",
+    "start": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
