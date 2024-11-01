@@ -1,9 +1,9 @@
-// src/routes/otpRoutes.js
 const express = require('express');
 const router = express.Router();
 const otpController = require('../controllers/otpController');
 
-router.post('/request', otpController.requestOtp);
-router.post('/verify', otpController.verifyOtp);
+router.post('/generate', otpController.generateAndSendOTP);
+
+// Implement other routes related to OTP...
 
 module.exports = router;
